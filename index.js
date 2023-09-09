@@ -155,6 +155,7 @@ function comment(data){
       renderPage(data);
       document.querySelector('.input-field').value = '';
       modLikeCount();
+      defaultState();
     }
   })
 }
@@ -437,6 +438,7 @@ function defaultState(){
   document.querySelector('#edit-btn').style.display ='none';
   document.querySelector('.modal').style.display = 'none';
   document.querySelector('body').style.overflow = 'visible';
+  location.reload();
 }
 
 function escBtn(){
