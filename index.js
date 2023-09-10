@@ -58,6 +58,7 @@ function modLikeCount(){
         likeCounts.forEach((likeCount) => {
           likeCount.textContent++;
           likeCount.classList.add('add');
+          likeCount.classList.remove('remove')
         })
       }
     })
@@ -74,6 +75,7 @@ function modLikeCount(){
         likeCounts.forEach((likeCount) => {
           likeCount.textContent++;
           likeCount.classList.add('add');
+          likeCount.classList.remove('remove');
         })
       }
     })
@@ -91,6 +93,7 @@ function modLikeCount(){
           if(likeCount.textContent > 0){
             likeCount.textContent--;
             likeCount.classList.add('remove');
+            likeCount.classList.remove('add');
           }
         })
       }
@@ -109,6 +112,7 @@ function modLikeCount(){
             if(likeCount.textContent > 0){
               likeCount.textContent--;
               likeCount.classList.add('remove');
+              likeCount.classList.remove('add');
             }
           })
         }
