@@ -52,10 +52,14 @@ function modLikeCount(){
     addLikeBtn.addEventListener('click', (e) => {
       const likeCounts = e.target.parentElement.parentElement.querySelectorAll('.like-count');
 
-      console.log(likeCounts);
-      likeCounts.forEach((likeCount) => {
-        likeCount.textContent++;
-      })
+      const check = likeCheck(likeCounts, 'add');
+
+      if(check){
+        likeCounts.forEach((likeCount) => {
+          likeCount.textContent++;
+          likeCount.classList.add('add');
+        })
+      }
     })
   })
   
@@ -64,9 +68,14 @@ function modLikeCount(){
       const likeCounts = e.target.parentElement.parentElement.parentElement.parentElement
       .querySelectorAll('.like-count');
 
-      likeCounts.forEach((likeCount) => {
-        likeCount.textContent++;
-      })
+      const check = likeCheck(likeCounts, 'add');
+
+      if(check){
+        likeCounts.forEach((likeCount) => {
+          likeCount.textContent++;
+          likeCount.classList.add('add');
+        })
+      }
     })
   })
   
@@ -75,12 +84,16 @@ function modLikeCount(){
       const likeCounts = e.target.parentElement.parentElement.parentElement.parentElement
       .querySelectorAll('.like-count');
 
-      console.log(likeCounts);
-      likeCounts.forEach((likeCount) => {
-        if(likeCount.textContent > 0){
-          likeCount.textContent--;
-        }
-      })
+      const check = likeCheck(likeCounts, 'remove');
+
+      if(check){
+        likeCounts.forEach((likeCount) => {
+          if(likeCount.textContent > 0){
+            likeCount.textContent--;
+            likeCount.classList.add('remove');
+          }
+        })
+      }
     })
   })
 
@@ -88,15 +101,34 @@ function modLikeCount(){
     removeLikeBtn.addEventListener('click', (e) => {
       const likeCounts = e.target.parentElement.parentElement
         .querySelectorAll('.like-count');
-        console.log(likeCounts);
-      ;
-      likeCounts.forEach((likeCount) => {
-        if(likeCount.textContent > 0){
-          likeCount.textContent--;
+      
+        const check = likeCheck(likeCounts, 'remove');
+
+        if(check){
+          likeCounts.forEach((likeCount) => {
+            if(likeCount.textContent > 0){
+              likeCount.textContent--;
+              likeCount.classList.add('remove');
+            }
+          })
         }
-      })
     })
   })
+}
+
+function likeCheck(likeCounts, classContain){
+  let check = false;
+
+  likeCounts.forEach((likeCount) => {
+    if(!likeCount.classList.contains(classContain)){
+      check = true;
+    } else {
+      check = false;
+    }
+  })
+
+  console.log(check);
+  return check;
 }
 
 function replyComment(data){
